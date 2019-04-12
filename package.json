@@ -1,0 +1,28 @@
+{
+  "name": "ScrapeToMongo",
+  "version": "1.0.0",
+  "description": "a website that scrapes a website and is able to save articles and comments",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarekR88/ScrapeToMongo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarekR88/ScrapeToMongo/issues"
+  },
+  "homepage": "https://github.com/DarekR88/ScrapeToMongo#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0",
+    "morgan": "^1.9.1"
+  }
+}
