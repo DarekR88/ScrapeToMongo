@@ -64,7 +64,7 @@ app.post('/articles/:id', function (req, res) {
 })
 
 app.get('/favorites', function (req, res) {
-    db.Article.find({favorited: true}).then(function (dbArticle) {
+    db.Article.find({ favorited: true }).then(function (dbArticle) {
         res.json(dbArticle);
     }).catch(function (err) {
         res.json(err);
@@ -83,6 +83,45 @@ app.post('/remove/:id', function (req, res) {
             res.send(edited);
         }
     })
+})
+
+app.get('/article/:id', function (req, res) {
+    let id = req.params.id
+    db.Article.findOne({ _id: req.params.id })
+        .populate('comment')
+        .then(function (dbArticle) {
+            console.log("YOU ARE HERE" + dbArticle);
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+})
+
+app.post('/comments/:id', function (req, res) {
+    db.Comment.create(req.body)
+        .then(function (dbComment) {
+            db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true })
+                .then((dbArticle) => {
+                    res.json(dbArticle);
+                })
+                .catch((err) => {
+                    res.json(err);
+                });
+        })
+        .catch(function (err) {
+            res.json(err);
+        })
+})
+
+app.delete('/cleanDb', function (req, res){
+    db.Article.deleteMany({favorited: false}, function(err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(null, data);
+        }
+      });
 })
 
 app.listen(PORT, function () {

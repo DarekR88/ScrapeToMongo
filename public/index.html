@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1 class='title'>Nintendo News!</h1>
     <div class='scrapeButtons'>
         <button type='submit' class='refresh' href='/all'>Recent Articles</button>
         <button type='submit' class='savedArticles' href='/saved'>Saved Articles</button>
+        <button type='submit' class='deleteArticles'>Get New Articles</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class='modalTitle'></h2>
+            <p>Comment Title:</p>
+            <input id='titleInput' name='title' size='36'>
+            <p>Comment:</p>
+            <textarea id='bodyInput' name='body' rows='8' cols='35'></textarea>
+            <div id='submitComment'></div>
+        </div>
     </div>
     <div class="articles"></div>
     <script src="app.js"></script>
 </body>
+
 </html>
